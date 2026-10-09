@@ -1,0 +1,1 @@
+"""Kazumi application test model."""

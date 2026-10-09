@@ -1,0 +1,26 @@
+# Copy to apps.yaml and point each platform at a built app package.
+apps:
+  - name: example
+    android:
+      app: test-apps/android-debug.apk
+      app_id: com.example.android
+    ios:
+      app: test-apps/ios-simulator.app
+      app_id: com.example.ios
+
+  # Profiles used by the included Kazumi example tests. Replace package IDs
+  # and app paths with values from your own Kazumi builds.
+  - name: kazumi
+    android:
+      app: test-apps/Kazumi-android-debug.apk
+      app_id: com.example.kazumi
+    ios:
+      simulator_app: test-apps/Kazumi-ios-simulator.app
+      device_app: test-apps/Kazumi-ios-device.app
+      app_id: com.example.kazumi
+
+  # Optional second app profile. Add its own package IDs and build outputs.
+  # - name: another-app
+  #   android:
+  #     app: /path/to/another-app.apk
+  #     app_id: com.example.another

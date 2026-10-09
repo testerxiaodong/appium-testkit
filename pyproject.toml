@@ -1,0 +1,52 @@
+[project]
+name = "appium-testkit"
+version = "0.1.0"
+description = "Reusable pytest and Appium test framework for Android and iOS"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12.4"
+dependencies = [
+    "appium-python-client>=6.0.7",
+    "PyYAML>=6.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "allure-pytest>=2.16.2",
+    "pytest>=9.1.1",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.15.0",
+    "testcontainers>=4.14,<5",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["appium_testkit", "apps", "tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP", "RUF"]
+ignore = ["RUF001", "RUF002"] # Full-width punctuation is intentional in Chinese UI text.
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B011"]
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "smoke: fast checks that verify the app can launch",
+    "mobile: checks that require an Android or iOS device",
+    "regression: broader user-flow regression coverage",
+    "platform(name): run only for a platform",
+    "device(name): run only for a configured device",
+    "app(name): run only for an app profile",
+    "update_notice_test: leave the Kazumi update notice open for a dedicated test",
+    "app_state(policy): preserve or clear_data before this test",
+    "auth_state(state): preserve, anonymous, or authenticated login state",
+    "permission_state(policy, *services): preserve, grant, or reset permissions",
+    "xdist_group(name): keep each device target on one xdist worker",
+]

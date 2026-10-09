@@ -1,0 +1,34 @@
+# Copy to devices.yaml and add the UDIDs of your own simulators/devices.
+devices:
+  - name: android-emulator
+    platform: android
+    udid: ""
+    device_name: Android Emulator
+    is_simulator: true
+    server_url: http://127.0.0.1:4723
+    system_port: 8200
+    no_reset: true
+    auto_grant_permissions: false
+
+  - name: ios-simulator
+    platform: ios
+    udid: ""
+    device_name: iPhone Simulator
+    is_simulator: true
+    server_url: http://127.0.0.1:4724
+    wda_local_port: 8100
+    mjpeg_server_port: 9100
+    no_reset: true
+
+  - name: ios-primary
+    platform: ios
+    udid: ""
+    device_name: iPhone
+    is_simulator: false
+    server_url: http://127.0.0.1:4726
+    wda_local_port: 8120
+    mjpeg_server_port: 9120
+    no_reset: true
+    allow_provisioning_updates: false
+    # xcode_team_id: YOUR_TEAM_ID
+    # wda_bundle_id: com.example.WebDriverAgentRunner
