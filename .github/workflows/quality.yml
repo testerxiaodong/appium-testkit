@@ -20,8 +20,11 @@ jobs:
         with:
           enable-cache: true
 
+      - name: Install project Python
+        run: uv python install
+
       - name: Install locked dependencies
-        run: uv sync --locked --all-groups --python 3.12
+        run: uv sync --locked --all-groups
 
       - name: Lint Python
         run: uv run ruff check .
